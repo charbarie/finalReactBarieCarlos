@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+
 import './ItemCounter.css'
+import { useCounter } from '../hooks/useCounter'
 export const ItemCounter = () => {
   return (
     <div>ItemCounter</div>
+
+
   )
 }
 

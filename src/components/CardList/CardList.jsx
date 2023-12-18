@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'React';
 import { Products } from '../Helpers/Products/Products';
 import  { CardProduct } from '../Card/Card';
 import './CardList.css'
@@ -16,11 +16,14 @@ const CardList = () => {
                   }, []
             );
   return (
+    <>    
+      <Row>
           <div className='box-card' >
-               {products.map(  (product) => (<CardProduct product={ product }/>) ) }
-              </Row>
+            {products.map(  (product) => (<CardProduct roduct = { product }/>) ) }
           </div>
-        )
+      </Row>
+    </>
+  )
 }
 
 

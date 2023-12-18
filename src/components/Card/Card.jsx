@@ -5,14 +5,15 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 
-import React from 'react'
+import React from 'React'
 import './Card.css'
 
 export const CardProduct = ({ product }) => {
+  
   return (
     <>
           
-          <Card className='Card'>
+          <Card className='Card' >
           <Card.Img variant="top" style={{ width: '10rem' }} src={ product.imageProduct  } />
             <Card.Body>
               <Card.Title>{product.name}</Card.Title>
