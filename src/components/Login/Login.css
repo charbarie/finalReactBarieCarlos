@@ -1,19 +1,15 @@
-
-
-
-
 .logueo {
     display: flex;
-    justify-content: flex-end; /* Ajusta la alineación a la izquierda */
-    padding-right: 150px; /* Ajusta el espacio en el lado derecho según tus necesidades */
+    justify-content: flex-end;
+    padding-right: 150px;
 }
 
 .contenedor {
     background: #a27b5c;
     background: linear-gradient(180deg, #a27b5c 36%, rgba(44, 54, 57, 0.795837) 68%);
-    font-family: "Oswald", sans-serif; /* Ajusta el color de fondo según tus necesidades */
-    padding: 10px; /* Ajusta el espacio interno según tus necesidades */
-    border: 1px solid #a27b5c;; /* Ajusta el estilo del borde según tus necesidades */
-    border-radius: 0px; /* Ajusta el radio del borde según tus necesidades */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajusta la sombra según tus necesidades */
+    font-family: "Oswald", sans-serif;
+    padding: 10px;
+    border: 1px solid #a27b5c;
+    border-radius: 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

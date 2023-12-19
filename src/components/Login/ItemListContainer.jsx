@@ -1,5 +1,5 @@
 
-/* import ItemCounter from "../ItemCounter/ItemCounter"; */
+
 import Login from "../Login/Login";
 import "./ItemListContainer.css"
 import carrito from "./carrito.png"

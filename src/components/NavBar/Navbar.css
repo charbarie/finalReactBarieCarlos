@@ -9,19 +9,16 @@
   margin: 0px;
 }
 
-
-.ItemlistContainer-nav{
+.ItemlistContainer-nav {
   width: 20px;
 }
 
 .logo-container {
   max-width: 100px;
-  padding-left: auto; /* Ajusta el ancho máximo según tus necesidades */
+  padding-left: auto;
 }
 
 .logo-img {
-  width: 100%; /* Esto garantiza que el logo ocupe el 100% del contenedor */
-  height: auto; /* Esto mantiene la proporción de aspecto */
+  width: 100%;
+  height: auto;
 }
-
-
