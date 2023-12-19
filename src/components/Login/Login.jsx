@@ -9,7 +9,6 @@ export const Login = () => {
             <form className= 'logueo' >
                 <NavDropdown className='prueba'title="😎" id="nav-dropdown" >
                 <div className='contenedor'>
-
                 <Form.Group className="mb-3 email" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                                 <Form.Control type="user" placeholder="Usuario" />

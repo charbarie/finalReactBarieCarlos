@@ -1,11 +1,8 @@
-* {
-    padding: 0%;
-    margin: 0%;
-    box-sizing: border-box; }
-  
-  body {
-    background: #a27b5c;
-    background: linear-gradient(180deg, #a27b5c 36%, rgba(44, 54, 57, 0.795837) 68%);
-    background-color: gray;
-  
-  }
+.body{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+
+
+}

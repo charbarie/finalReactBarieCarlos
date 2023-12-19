@@ -3,9 +3,16 @@
 import './ItemCounter.css'
 import { useCounter } from '../hooks/useCounter'
 export const ItemCounter = () => {
-  return (
-    <div>ItemCounter</div>
+  const {} = useCounter()
 
+
+  return (
+  <>
+      <div>ItemCounter</div>
+      <label>{ 1 } </label>
+      <button onClick={handleSum}> + </button>
+      <button onClick={handleRest}> - </button>
+  </>
 
   )
 }

@@ -1,7 +1,6 @@
 
-
-.itemlistcontainer img{
-    width: 3rem;
-    padding: 10px;
-    margin-top: -1.5rem;
+.carrito {
+    width: 30px; /* Ajusta el ancho según tus necesidades */
+    height: auto; /* La altura se ajustará automáticamente para mantener la proporción */
+    margin-right: 10px; /* Ajusta el margen derecho según tus necesidades */
 }

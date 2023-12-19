@@ -5,8 +5,8 @@
 
 import './App.css'
 import Body from './components/Body/Body'
-import NavBar from './components/NavBar/Navbar'
-
+ import NavBar from './components/NavBar/Navbar' 
+ import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-    <NavBar/>
+    <NavBar/> 
     <Body/>
       
     </>

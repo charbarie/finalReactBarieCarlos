@@ -193,5 +193,4 @@ const productosSkateStock = [
 ];
 
 
-// eslint-disable-next-line no-unused-vars
-export const Products = () => new Promise((res, rej)=>{ setTimeout( ()=> res(productosSkateStock) ,1000)}) 
+export const Products = () => new Promise((res) => setTimeout(() => res(productosSkateStock), 1000));

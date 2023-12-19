@@ -1,24 +1,15 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
-import { Products } from '../Helpers/Products/Products';
+
 import CardList from '../CardList/CardList';
-/* eslint-disable no-unused-vars */
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import './Body.css'
+
+
 const Body = () => {
-
-
-    return (
+  console.log("entro a body")
+  return (
     <>
-    
-      <h2>Lista de Productos:</h2>
-      <CardList/>
-        
-       
-    
+    <div className='body'>
+    <h2>Lista de Productos:</h2>
+    <CardList/>
+    </div>
     </>
   );
 };
