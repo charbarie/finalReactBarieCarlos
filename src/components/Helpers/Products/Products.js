@@ -193,4 +193,4 @@ const productosSkateStock = [
 ];
 
 
-export const Products = () => new Promise((res) => setTimeout(() => res(productosSkateStock), 1000));
+export const Products = () => new Promise((res) => setTimeout(() => res(productosSkateStock), 6000));
