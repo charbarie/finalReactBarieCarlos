@@ -4,8 +4,9 @@ import logo from "./yeahlogo.png";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import ItemListContainer from '../ItemListContainer/ItemListContainer';
+
 import './Navbar.css';
+
 
 
 const NavBar = () => {
@@ -27,8 +28,10 @@ const NavBar = () => {
           <Nav className="ms-auto">
           </Nav>
         </Navbar.Collapse>
+       
+        
       </Container>
-      <ItemListContainer />
+      
     </Navbar>
   );
 };

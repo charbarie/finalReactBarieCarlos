@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 export const CardProduct = ({ product }) => {
   return (
     <Card style={{ width: '100%', height: '100%' }}>
@@ -13,7 +14,8 @@ export const CardProduct = ({ product }) => {
           <Card.Title>{product.name}</Card.Title>
           <Card.Text>{product.description}</Card.Text>
           <Card.Text>${product.price}</Card.Text>
-          <Card.Text>Stock {product.stock}</Card.Text>
+          <Card.Text></Card.Text>
+           
         </div>
         <div style={{ width: '100%' }}>
           <Button variant="primary" style={{ width: '100%' }}>
