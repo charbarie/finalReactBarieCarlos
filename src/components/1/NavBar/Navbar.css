@@ -1,0 +1,24 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: #a27b5c;
+  background: linear-gradient(180deg, #a27b5c 36%, rgba(44, 54, 57, 0.795837) 68%);
+  font-family: "Oswald", sans-serif;
+  margin: 0px;
+}
+
+.ItemlistContainer-nav {
+  width: 20px;
+}
+
+.logo-container {
+  max-width: 100px;
+  padding-left: auto;
+}
+
+.logo-img {
+  width: 100%;
+  height: auto;
+}

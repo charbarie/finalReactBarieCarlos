@@ -1,25 +1,24 @@
-
-
-
-
-
-import './App.css'
-import Body from './components/Body/Body'
-import ItemCounter from './components/ItemCounter/ItemCounter'
-import NavBar from './components/NavBar/Navbar' 
-import 'bootstrap/dist/css/bootstrap.min.css'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import NavBar from './Components/Navbar/NavBar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
+import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
 
 function App() {
-
-
   return (
     <>
-    <NavBar/>
-    <Body/>
-
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/category/:categoryId" element={<ItemListContainer />} />
+          <Route path="/item/:itemId" element={<ItemDetailContainer />} />
+          <Route path="*" element={<h1>404 NOT FOUND</h1>} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

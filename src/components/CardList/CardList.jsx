@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import CardProduct from '../Card/CardProduct';
+import CardProduct from '../CardProduct/CardProduct';
 import { Products } from '../Helpers/Products/Products';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/Row';
@@ -24,7 +24,6 @@ const CardList = () => {
     </Row>
   );
 };
-
 export default CardList;
 
 

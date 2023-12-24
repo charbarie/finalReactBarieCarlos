@@ -1,35 +1,19 @@
+/* eslint-disable react/prop-types */
 
 
+import { useCounter } from '../hooks/useCounter';
+import Button from 'react-bootstrap/Button';
 
-import { useCounter } from '../hooks/useCounter'
-
-
-
-export const ItemCounter = (initial =1 ,stock =5 ,onAdd) => {
-  const {counter ,handleSum, handleRest} = useCounter(initial , stock )
-  const handleOnAdd = () => {
-    onAdd(counter)
-  }
-
+export const ItemCounter = ({ initial = 1, stock}) => {
+  const { counter, handleSum, handleRest } = useCounter(initial, stock);
 
   return (
-  <>
-      <div>ItemCounter</div>
-      <label>{ counter } </label>
-      <button onClick={handleSum}> + </button>
-      <button onClick={handleRest}> - </button>
-      <button onClick={handleOnAdd}>Agregar</button>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+      <Button variant="primary" onClick={handleSum}> + </Button>
+      <label style={{ fontSize: '1.5rem', margin: '0 10px' }}> {counter} </label>
+      <Button variant="danger" onClick={handleRest} disabled={counter === 0}> - </Button>
+    </div>
+  );
+};
 
-  </>
-
-  )
-}
-
-
-export default ItemCounter
-
-
-
-
-
-
+export default ItemCounter;
