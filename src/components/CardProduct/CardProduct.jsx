@@ -2,7 +2,7 @@
 
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemCounter from '../ItemCounter/ItemCounter';
+import {ItemCounter} from '../ItemCounter/ItemCounter';
 
 export const CardProduct = ({ product }) => {
  

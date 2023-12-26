@@ -1,37 +1,37 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useEffect, createContext, useState, useMemo } from 'react';
+import React, {  createContext, useState } from 'react';
 
 // Cart Context
 export const CartContext = createContext({ cart: [] });
 
 export const CartProvider = ({ children }) => {
-  const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-  const [cart, setCart] = useState(storedCart);
+  const [cart, setCart] = useState([]);
+  console.log(cart)
 
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
 
-  const totalQuantity = useMemo(() => {
-    return cart.reduce((total, item) => total + item.quantity, 0);
-  }, [cart]);
+  const addItem = (item,quantity) => {
+    if(!isInCart(item.id)){
+      setCart(prev => [...prev, { ...item, quantity }]);
+    }else{
+      console.log('Producto ya agregado')
+    }
  
-  const addItem = (game, id, quantity) => {
-    setCart(prev => [...prev, { ...game, id, quantity }]);
   };
 
-  const removeItem = (gameId) => {
-    const cartUpdated = cart.filter(item => item.game.id !== gameId);
+  const removeItem = (ItemId) => {
+    const cartUpdated = cart.filter(prod => prod.id !== ItemId);
     setCart(cartUpdated);
   }
 
-  const clearItem = () => {
+  const clearCart= () => {
     setCart([]);
   }
-
+  const isInCart = (itemId) => {
+    return cart.some(prod => prod.id === itemId)
+  }
   return (
-    <CartContext.Provider value={{ cart, totalQuantity, addItem, removeItem, clearItem }}>
+    <CartContext.Provider value={{ cart, addItem, removeItem, clearCart }}>
       {children}
     </CartContext.Provider>
   );

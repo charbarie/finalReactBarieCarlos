@@ -1,29 +1,31 @@
 
 import Card from 'react-bootstrap/Card';
-
+import ItemCounter from '../ItemCounter/ItemCounter';
 import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { ItemCounter } from '../ItemCounter/ItemCounter';
+import { CartContext } from '../Context/CardContext';
 
 const ItemDetail = ({ product }) => {
   const [ quantityAdded,  setQuantityAdded] = useState(0)
 
-  const { addItem } = useContext({ CartContext })
-  
+  const { addItem } = useContext(CartContext)
 
   const handleOnAdd = (quantity) => {
     setQuantityAdded(quantity)
   }
  
-  
+
+   const item = { 
+    id, name , price
+  }
+  addItem (item , quantity)
 
 
 
 
   return (
-    
     <Card style={{ width: '100%', height: '100%' }}>
       <Card.Img variant="top" src={product.imageProduct} />
       <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
@@ -47,8 +49,8 @@ const ItemDetail = ({ product }) => {
       </Card.Body>
     </Card>
   );
-};
 
+            }
 ItemDetail.propTypes = {
   product: PropTypes.shape({
     imageProduct: PropTypes.string,
