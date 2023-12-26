@@ -1,15 +1,14 @@
 
 import Card from 'react-bootstrap/Card';
-import ItemCounter from '../ItemCounter/ItemCounter';
 import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { CartContext } from '../Context/CardContext';
+import { CartContext } from '../Context/CardContext'
+
 
 const ItemDetail = ({ product }) => {
   const [ quantityAdded,  setQuantityAdded] = useState(0)
-
   const { addItem } = useContext(CartContext)
 
   const handleOnAdd = (quantity) => {
@@ -20,7 +19,7 @@ const ItemDetail = ({ product }) => {
    const item = { 
     id, name , price
   }
-  addItem (item , quantity)
+  addItem (item ,quantity)
 
 
 
@@ -41,7 +40,7 @@ const ItemDetail = ({ product }) => {
                                         <Button> Finaliza </Button>
                                       </Link>
                                 ) : (
-                                      <ItemCounter initial={1} stock={product.stock} price={product.price} addItem={handleOnAdd} />
+                                      <CartContext initial={1} stock={product.stock} price={product.price} addItem={handleOnAdd} />
                                     )
               }
       
