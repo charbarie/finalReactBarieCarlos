@@ -1,23 +1,29 @@
 
 import Card from 'react-bootstrap/Card';
-import ItemCounter from '../ItemCounter/ItemCounter';
+
 import PropTypes from 'prop-types';
+import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { ItemCounter } from '../ItemCounter/ItemCounter';
 
 const ItemDetail = ({ product }) => {
-  console.log('itemdetail');
+  const [ quantityAdded,  setQuantityAdded] = useState(0)
 
-  if (!product) {
-
-    return <div>No hay información del producto</div>;
-  }
-
-
-  const handleAddToCart = (selectedQuantity) => {
+  const { addItem } = useContext({ CartContext })
   
-    console.log(`Añadir ${selectedQuantity} ${product.name} al carrito`);
-  };
+
+  const handleOnAdd = (quantity) => {
+    setQuantityAdded(quantity)
+  }
+ 
+  
+
+
+
 
   return (
+    
     <Card style={{ width: '100%', height: '100%' }}>
       <Card.Img variant="top" src={product.imageProduct} />
       <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
@@ -28,7 +34,15 @@ const ItemDetail = ({ product }) => {
           <Card.Text>Stock: {product.stock}</Card.Text>
         </div>
         <div style={{ width: '100%' }}>
-          <ItemCounter stock={product.stock} onAdd={handleAddToCart} />
+              {
+                quantityAdded > 0 ? ( <Link to="/cart">
+                                        <Button> Finaliza </Button>
+                                      </Link>
+                                ) : (
+                                      <ItemCounter initial={1} stock={product.stock} price={product.price} addItem={handleOnAdd} />
+                                    )
+              }
+      
         </div>
       </Card.Body>
     </Card>

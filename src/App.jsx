@@ -2,13 +2,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import NavBar from './Components/Navbar/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
+import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
+import CartProvider  from './components/Context/CardContext';
 
 function App() {
   return (
     <>
       <BrowserRouter>
+      <CartProvider>
         <NavBar />
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
@@ -16,9 +18,11 @@ function App() {
           <Route path="/item/:itemId" element={<ItemDetailContainer />} />
           <Route path="*" element={<h1>404 NOT FOUND</h1>} />
         </Routes>
+        </CartProvider>
       </BrowserRouter>
     </>
   );
 }
 
 export default App;
+
