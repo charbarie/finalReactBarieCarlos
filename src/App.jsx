@@ -4,9 +4,9 @@ import NavBar from './Components/Navbar/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
-
 import Cart from './components/Cart/Cart';
-import { CartProvider } from './components/Context/CardContext';
+import { CartProvider } from './Components/Context/CardContext';
+
 
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
         </CartProvider>
       </BrowserRouter>
     </>
+    
   );
 }
 
