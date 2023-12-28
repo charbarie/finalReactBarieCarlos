@@ -3,7 +3,7 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
 
 import { getDoc , doc } from 'firebase/firestore';
-import { getfirebas } from '../../services/firebase/firebaseConfig';
+import { getfirebas } from '/src/services/firebase/firebaseConfig.js';
 
 
 

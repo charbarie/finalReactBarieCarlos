@@ -2,7 +2,8 @@ import  { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CardList from '../CardList/CardList.jsx';
 import { getDocs, collection , query , where } from 'firebase/firestore';
-import { getfirebas } from '../../services/firebase/firebaseConfig.js'
+
+import { getfirebas } from '/src/services/firebase/firebaseConfig.js';
 
 
 const ItemListContainer = () => {

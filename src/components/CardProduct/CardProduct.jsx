@@ -10,6 +10,7 @@ export const CardProduct = ({ product }) => {
   
     console.log(`Añadir ${selectedQuantity} ${product.name} al carrito`);
   };
+  
 
   return (
     <Card style={{ width: '100%', height: '100%' }}>

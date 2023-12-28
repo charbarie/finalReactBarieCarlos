@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { CartContext } from "../Context/CardContext"
 import { Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { CardProduct } from "../CardProduct/CardProduct"
+import CardProduct from '../CardProduct/CardProduct'
 
 
 
