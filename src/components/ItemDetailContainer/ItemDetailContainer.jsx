@@ -1,35 +1,49 @@
 import { useEffect, useState } from 'react';
-import { getProductById } from '../Helpers/Products/Products';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
 
-export const ItemDetailContainer = () => {
+import { getDoc , doc } from 'firebase/firestore';
+import { getfirebas } from '../../services/firebase/firebaseConfig';
+
+
+
+
+
+const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null);
+  const [loading ,setLoading] = useState(true)
 
   const { itemId } = useParams();
 
   useEffect(() => {
-    console.log('Before fetch:', product);
-    getProductById(itemId)
-      .then(res => {
-        setProduct(res);
-        console.log('After fetch (success):', res);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-        console.log('After fetch (error):', product);
-      });
-  }, [itemId, product]); 
+    setLoading(true)
 
-  return (
-    <>
-      <ItemDetail product={product} />
-    </>
-  );
-};
+    const docRef = doc(getfirebas , 'products', itemId)
+
+    getDoc(docRef)
+        .then(res => {
+          const data = res.data()
+          const productAdapted = { id:res.id, ...data }
+          setProduct(productAdapted)
+        })
+        .catch(error => { console.log(error)})
+        .finally(() => {
+          setLoading(false); 
+        });
+    }, [itemId]); 
+
+    return (
+      <>
+       {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <ItemDetail product={product} />
+        )}
+      </>
+    );
+  };
+  
+  export default ItemDetailContainer;
 
 
 
-
-
-export default ItemDetail;

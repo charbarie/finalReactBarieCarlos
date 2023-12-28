@@ -2,23 +2,23 @@ import  { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CardList from '../CardList/CardList.jsx';
 import { getDocs, collection , query , where } from 'firebase/firestore';
-import { firebas } from '../../services/firebase/firebaseConfig.js'
+import { getfirebas } from '../../services/firebase/firebaseConfig.js'
 
 
- const ItemListContainer = () => {
+const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const [loading , setLoading ] = useState(true)
+  const [ setLoading ] = useState(true)
   const { categoryId } = useParams();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
 
     setLoading(true)
-    
+
     const collectionRef = categoryId
-      ? query(collection(firebas,"products"),where('category', '==',categoryId ))
-      : collection(firebas,'products')
-      
+      ? query(collection(getfirebas,"products"),where('category', '==',categoryId ))
+      : collection(getfirebas,'products')
+
     getDocs(collectionRef)
           .then(res => {
               const productsAdapted = res.docs.map( doc => {
