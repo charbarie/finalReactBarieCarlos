@@ -29,17 +29,17 @@ const Checkout = () => {
             const outOfStock = [];
 
             // Retrieve information from CartContext.
-            for (const game of cart) {
-                const gameRef = doc(getfirebas, 'games', game.id);
-                const gameDoc = await getDoc(gameRef);
-                if (gameDoc.exists()) {
-                    const stock = gameDoc.data().stock;
-                    if (stock >= game.quantity) {
-                        batch.update(gameRef, {
-                            stock: stock - game.quantity
+            for (const Item of cart) {
+                const ItemRef = doc(getfirebas, 'Items', Item.id);
+                const ItemDoc = await getDoc(ItemRef);
+                if (ItemDoc.exists()) {
+                    const stock = ItemDoc.data().stock;
+                    if (stock >= Item.quantity) {
+                        batch.update(ItemRef, {
+                            stock: stock - Item.quantity
                         });
                     } else {
-                        outOfStock.push(game.title);
+                        outOfStock.push(Item.title);
                     }
                 }
             }
@@ -53,7 +53,7 @@ const Checkout = () => {
                 setOrderId(orderDocRef.id);
                 await batch.commit();
                 resetItem();
-                setLoading(false); 
+                setLoading(false);
             }
 
         } catch (error) {
@@ -63,11 +63,11 @@ const Checkout = () => {
     }
 
     if (loading) {
-        return <h3>Order is being generated...</h3>
+        return <h3>La orden se esta generando .</h3>
     }
 
     if (orderId) {
-        return <h3>Order ID is {orderId}</h3>
+        return <h3> su orden es {orderId}</h3>
     }
 
     return (
