@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -18,13 +19,13 @@ const NavBar = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <div className='Categories'>
-            <NavLink to="/category/Indumetaria" className="nav-link ms-0" activeClassName ="ActiveOption">
+            <NavLink to="/category/Indumetaria" className="nav-link ms-0" >
               Indumentaria
             </NavLink>
-            <NavLink to="/category/Skate" className="nav-link ms-0" activeClassName ="ActiveOption">
+            <NavLink to="/category/Skate" className="nav-link ms-0" >
               Skate
             </NavLink>
-            <NavLink to="/category/Proteccion" className="nav-link ms-0" activeClassName ="ActiveOption">
+            <NavLink to="/category/Proteccion" className="nav-link ms-0" >
               Proteccion
             </NavLink>
           </div>

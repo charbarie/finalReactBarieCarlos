@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { CartContext } from "../../hooks/Context/Context";
 import { Timestamp, collection, writeBatch, doc, getDoc, addDoc } from "firebase/firestore";
-import { getfirebas } from "../../services/FirebaseConfig/FirebaseConfig";
+import { firebaseConection } from "../../services/FirebaseConfig/FirebaseConfig";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 const Checkout = () => {
@@ -25,12 +25,12 @@ const Checkout = () => {
                 orderDate: Timestamp.fromDate(new Date())
             }
 
-            const batch = writeBatch(getfirebas);
+            const batch = writeBatch(firebaseConection);
             const outOfStock = [];
 
             // Retrieve information from CartContext.
             for (const Item of cart) {
-                const ItemRef = doc(getfirebas, 'Items', Item.id);
+                const ItemRef = doc(firebaseConection, 'Items', Item.id);
                 const ItemDoc = await getDoc(ItemRef);
                 if (ItemDoc.exists()) {
                     const stock = ItemDoc.data().stock;
@@ -48,7 +48,7 @@ const Checkout = () => {
                 setLoading(false);
                 console.error('Error:', outOfStock);
             } else {
-                const ordersRef = collection(getfirebas, 'orders');
+                const ordersRef = collection(firebaseConection, 'orders');
                 const orderDocRef = await addDoc(ordersRef, newOrder);
                 setOrderId(orderDocRef.id);
                 await batch.commit();

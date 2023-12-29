@@ -1,39 +1,40 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CardList from '../CardList/CardList.jsx';
-import { getDocs, collection , query , where } from 'firebase/firestore';
-
-import { getfirebas } from '/src/services/firebase/firebaseConfig.js';
-
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { firebaseConnection } from '/src/services/firebase/firebaseConfig.js';
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const [ setLoading ] = useState(true)
+  const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
 
-    setLoading(true)
+        const collectionRef = categoryId
+          ? query(collection(firebaseConnection, 'products'), where('category', '==', categoryId))
+          : collection(firebaseConnection, 'products');
 
-    const collectionRef = categoryId
-      ? query(collection(getfirebas,"products"),where('category', '==',categoryId ))
-      : collection(getfirebas,'products')
+        const snapshot = await getDocs(collectionRef);
+        const productsAdapted = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setProducts(productsAdapted);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    getDocs(collectionRef)
-          .then(res => {
-              const productsAdapted = res.docs.map( doc => {
-                    const data = doc.data()
-                    return{ id: doc.id, ...data}
-            })
-            setProducts(productsAdapted)
-          })
-          .catch(error => { console.log(error)})
-          .finally(() => { setLoading(false)})
-  })
+    fetchData();
+  }, [categoryId]);
+
   return (
     <>
-    <CardList products={products}/>
+      {loading ? <LoadingIndicator /> : <CardList products={products} />}
     </>
   );
 };

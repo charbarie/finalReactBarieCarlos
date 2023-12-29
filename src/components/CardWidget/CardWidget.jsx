@@ -11,7 +11,7 @@ export const CardWidget = () => {
     <>
       <Link to="/cart" className="CartWidget" style={{ display: totalQuantity > 0 ? 'block' : 'none' }}>
         <img className="carrito" src={carrito} alt="carrito" />
-        {totalQuantity}
+        {totalQuantity.cart.length}
       </Link>
     </>
   );
