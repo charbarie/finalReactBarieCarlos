@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import CardList from '../CardList/CardList.jsx';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
-import { getDocs, collection, query, where, getFirestore, doc } from 'firebase/firestore';
-import { firebaseConnection } from '/src/services/firebase/firebaseConfig.js';
+import { getDocs, collection, getFirestore } from 'firebase/firestore';
+
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
 
   const [loading, setLoading] = useState(true);
-  const { categoryId } = useParams();
+
 
   useEffect(() => {
 
@@ -37,4 +36,3 @@ const ItemListContainer = () => {
 };
 
 export default ItemListContainer;
-
