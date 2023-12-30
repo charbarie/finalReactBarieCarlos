@@ -30,7 +30,7 @@ const ItemDetail = ({ product }) => {
             </Link>
           ) : (
             <Button variant="success" onClick={() => handleOnAdd(1)}>
-              Agregar al carrito ItemDetail
+              Agregar al carrito
             </Button>
 
           )}

@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ItemCounter } from '../ItemCounter/ItemCounter';
 
+
 export const Item = ({ product }) => {
 
   const handleAddToCart = (selectedQuantity) => {
@@ -23,7 +24,11 @@ export const Item = ({ product }) => {
           <Card.Text>Stock: {product.stock}</Card.Text>
         </div>
         <div style={{ width: '100%' }}>
+
           <ItemCounter stock={product.stock} onAddToCart={handleAddToCart} />
+
+
+
         </div>
       </Card.Body>
     </Card>
