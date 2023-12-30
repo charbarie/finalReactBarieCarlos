@@ -12,7 +12,7 @@ function App() {
     <>
       <CartProvider>
         <BrowserRouter>
-          <NavBar/>
+          <NavBar />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/category/:categoryId" element={<ItemListContainer />} />

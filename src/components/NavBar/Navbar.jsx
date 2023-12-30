@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-duplicate-props */
-
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Navbar.css';
@@ -9,7 +7,6 @@ import { NavLink } from 'react-router-dom';
 import logo from './yeahlogo.png';
 
 const NavBar = () => {
-  
   return (
     <Navbar expand="lg">
       <Navbar.Brand href="#home" className="logo-container">
@@ -19,19 +16,18 @@ const NavBar = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <div className='Categories'>
-            <NavLink to="/category/Indumetaria" className="nav-link ms-0" >
+            <NavLink to="/category/Indumentaria" className="nav-link ms-0" >
               Indumentaria
             </NavLink>
             <NavLink to="/category/Skate" className="nav-link ms-0" >
               Skate
             </NavLink>
-            <NavLink to="/category/Proteccion" className="nav-link ms-0" >
+            <NavLink to="/category/Protección" className="nav-link ms-0" >
               Proteccion
             </NavLink>
           </div>
         </Nav>
-        <Nav className="ms-auto">
-        </Nav>
+
         <CardWidget />
       </Navbar.Collapse>
     </Navbar>

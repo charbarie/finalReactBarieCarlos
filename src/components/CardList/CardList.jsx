@@ -1,30 +1,20 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable react/prop-types */
 
-import { Products } from '../Helpers/Products/Products';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import CardProduct from '../CardProduct/CardProduct'
+import CardProduct from '../CardProduct/CardProduct';
 
-const CardList = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    Products()
-      .then((res) => setProducts(res))
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
-
+const CardList = ({ products }) => {
   return (
     <Row>
       {products.map((product) => (
         <Col key={product.id} xs={12} sm={6} md={4} lg={3} style={{ marginBottom: '1rem' }}>
-          <CardProduct key={product.id} product={product} />
+          <CardProduct product={product} />
         </Col>
       ))}
     </Row>
   );
 };
+
 export default CardList;
-
-
