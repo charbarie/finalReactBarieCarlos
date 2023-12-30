@@ -10,8 +10,9 @@ import NavBar from './components/NavBar/Navbar';
 function App() {
   return (
     <>
-      <CartProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <CartProvider>
+
           <NavBar />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
@@ -20,8 +21,9 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<h1>404 NOT FOUND</h1>} />
           </Routes>
-        </BrowserRouter>
-      </CartProvider>
+
+        </CartProvider>
+      </BrowserRouter>
     </>
   );
 }
