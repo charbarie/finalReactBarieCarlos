@@ -1,35 +1,33 @@
+/* eslint-disable react/prop-types */
 
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import Card from 'react-bootstrap/Card';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ItemCounter } from '../ItemCounter/ItemCounter';
 
-const Item = ({ product }) => {
+export const Item = ({ product }) => {
+
+  const handleAddToCart = (selectedQuantity) => {
+
+    console.log(`Añadir ${selectedQuantity} ${product.name} al carrito`);
+  };
+
+
   return (
-    <article className='CardItem'>
-      <header className='Header'>
-        <h2 className='ItemHeader'>{product.name}</h2>
-      </header>
-      <img src={product.image} alt={product.description} />
-      <section>
-        <p className='data'>Precio: ${product.price}</p>
-        <p className='data'>Stock disponible: {product.stock}</p>
-      </section>
-      <footer className='Itemfooter'>
-      <Link to={`./category/${product.id}`} className='Option'>{product.category}</Link>
-      </footer>
-    </article>
+    <Card style={{ width: '100%', height: '100%' }}>
+      <Card.Img variant="top" src={product.imageProduct} />
+      <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+        <div>
+          <Card.Title>{product.name}</Card.Title>
+          <Card.Text>{product.description}</Card.Text>
+          <Card.Text>${product.price}</Card.Text>
+          <Card.Text>Stock: {product.stock}</Card.Text>
+        </div>
+        <div style={{ width: '100%' }}>
+          <ItemCounter stock={product.stock} onAddToCart={handleAddToCart} />
+        </div>
+      </Card.Body>
+    </Card>
   );
-};
-
-Item.propTypes = {
-  product: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    stock: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    category:PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 export default Item;

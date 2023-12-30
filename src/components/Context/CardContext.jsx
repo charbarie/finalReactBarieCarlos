@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, {  createContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
 // Cart Context
 export const CartContext = createContext({ cart: [] });
@@ -10,13 +10,13 @@ export const CartProvider = ({ children }) => {
   console.log(cart)
 
 
-  const addItem = (item,quantity) => {
-    if(!isInCart(item.id)){
+  const addItem = (item, quantity) => {
+    if (!isInCart(item.id)) {
       setCart(prev => [...prev, { ...item, quantity }]);
-    }else{
+    } else {
       console.log('Producto ya agregado')
     }
- 
+
   };
 
   const removeItem = (ItemId) => {
@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
     setCart(cartUpdated);
   }
 
-  const clearCart= () => {
+  const clearCart = () => {
     setCart([]);
   }
   const isInCart = (itemId) => {

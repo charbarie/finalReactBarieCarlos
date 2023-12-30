@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import CardList from '../CardList/CardList.jsx';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 import { getDocs, collection, getFirestore, query, where } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
+import ItemList from '../ItemList/ItemList.jsx';
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -37,7 +37,7 @@ const ItemListContainer = () => {
 
   return (
     <>
-      {loading ? <LoadingIndicator /> : <CardList products={filteredProducts.length > 0 ? filteredProducts : products} />}
+      {loading ? <LoadingIndicator /> : <ItemList products={filteredProducts.length > 0 ? filteredProducts : products} />}
     </>
   );
 };

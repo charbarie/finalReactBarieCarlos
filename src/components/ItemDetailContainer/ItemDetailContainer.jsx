@@ -21,6 +21,9 @@ const ItemDetailContainer = () => {
         const data = res.data();
         const productAdapted = { id: res.id, ...data };
         setProduct(productAdapted);
+
+
+
       })
       .catch(error => {
         console.error(error);
@@ -29,6 +32,7 @@ const ItemDetailContainer = () => {
         setLoading(false);
       });
   }, [itemId]);
+
 
   return (
     <>

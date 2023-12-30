@@ -1,28 +1,17 @@
-
+import { useContext, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
-import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { CartContext } from '../Context/CardContext'
-
+import { CartContext } from '../Context/CardContext';
 
 const ItemDetail = ({ product }) => {
-  const [ quantityAdded,  setQuantityAdded] = useState(0)
-  const { addItem } = useContext(CartContext)
+  const [quantityAdded, setQuantityAdded] = useState(0);
+  const { addItem } = useContext(CartContext);
 
   const handleOnAdd = (quantity) => {
-    setQuantityAdded(quantity)
-  }
- 
-
-   const item = { 
-    id, name , price
-  }
-  addItem (item ,quantity)
-
-
-
+    setQuantityAdded(quantity);
+  };
 
   return (
     <Card style={{ width: '100%', height: '100%' }}>
@@ -35,21 +24,22 @@ const ItemDetail = ({ product }) => {
           <Card.Text>Stock: {product.stock}</Card.Text>
         </div>
         <div style={{ width: '100%' }}>
-              {
-                quantityAdded > 0 ? ( <Link to="/cart">
-                                        <Button> Finaliza </Button>
-                                      </Link>
-                                ) : (
-                                      <CartContext initial={1} stock={product.stock} price={product.price} addItem={handleOnAdd} />
-                                    )
-              }
-      
+          {quantityAdded > 0 ? (
+            <Link to="/cart">
+              <Button onClick={() => addItem(product, quantityAdded)}>Finalizar</Button>
+            </Link>
+          ) : (
+            <Button variant="success" onClick={() => handleOnAdd(1)}>
+              Agregar al carrito ItemDetail
+            </Button>
+
+          )}
         </div>
       </Card.Body>
     </Card>
   );
+};
 
-            }
 ItemDetail.propTypes = {
   product: PropTypes.shape({
     imageProduct: PropTypes.string,
@@ -57,7 +47,6 @@ ItemDetail.propTypes = {
     description: PropTypes.string,
     price: PropTypes.number,
     stock: PropTypes.number,
-   
   }),
 };
 

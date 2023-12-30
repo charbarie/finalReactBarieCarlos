@@ -1,9 +1,9 @@
 
 import { useState } from "react";
 
-export const useCounter = (min, max ) => {
+export const useCounter = (min, max) => {
   const [counter, setCounter] = useState(min);
-  
+
 
   const handleSum = () => {
     if (counter < max) {
