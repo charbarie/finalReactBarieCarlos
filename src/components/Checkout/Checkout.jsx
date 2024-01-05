@@ -28,7 +28,7 @@ const Checkout = () => {
             const batch = writeBatch(firebaseConection);
             const outOfStock = [];
 
-            // Retrieve information from CartContext.
+
             for (const Item of cart) {
                 const ItemRef = doc(firebaseConection, 'Items', Item.id);
                 const ItemDoc = await getDoc(ItemRef);

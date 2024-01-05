@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
+import { getDoc, doc, getFirestore } from 'firebase/firestore';
 
-import { getDoc, doc } from 'firebase/firestore';
-import { firebaseConnection } from '/src/services/firebase/firebaseConfig.js';
 
 const ItemDetailContainer = () => {
-  const [product, setProduct] = useState(null);
+  const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const { itemId } = useParams();
@@ -14,34 +13,25 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setLoading(true);
 
-    const docRef = doc(firebaseConnection, 'products', itemId);
+    const dbFirestore = getFirestore()
+    const docRef = doc(dbFirestore, 'Productos', itemId);
 
     getDoc(docRef)
-      .then(res => {
-        const data = res.data();
-        const productAdapted = { id: res.id, ...data };
-        setProduct(productAdapted);
-
-
-
-      })
-      .catch(error => {
-        console.error(error);
-      })
+      .then(res => setProducto({ id: res.id, ...res.data() }))
+      .catch(err => console.log(err))
       .finally(() => {
         setLoading(false);
       });
   }, [itemId]);
 
-
   return (
-    <>
+    <div style={{ width: '50%', height: '50%', paddingLeft: '35rem' }}>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <ItemDetail product={product} />
+        <ItemDetail product={producto} />
       )}
-    </>
+    </div >
   );
 };
 

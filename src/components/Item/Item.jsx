@@ -3,15 +3,14 @@
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ItemCounter } from '../ItemCounter/ItemCounter';
+import { Link } from 'react-router-dom';
 
 
 export const Item = ({ product }) => {
 
   const handleAddToCart = (selectedQuantity) => {
-
     console.log(`Añadir ${selectedQuantity} ${product.name} al carrito`);
   };
-
 
   return (
     <Card style={{ width: '100%', height: '100%' }}>
@@ -24,11 +23,9 @@ export const Item = ({ product }) => {
           <Card.Text>Stock: {product.stock}</Card.Text>
         </div>
         <div style={{ width: '100%' }}>
-
           <ItemCounter stock={product.stock} onAddToCart={handleAddToCart} />
 
-
-
+          <Link to={`/item/${product.id}`}>ver detalle</Link>
         </div>
       </Card.Body>
     </Card>

@@ -27,13 +27,13 @@ const CheckoutForm = ({ onConfirm }) => {
 
     return (
 
-        // Form with data.
+
         <Form onSubmit={handleConfirm}>
             <Form.Group className="mx-auto my-2 w-50" controlId="formBasicName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control type="text" placeholder="Enter your Name" value={userName} onChange={({ target }) => setUserName(target.value)} />
             </Form.Group>
-        
+
             <Form.Group className="mx-auto my-2 w-50" controlId="formBasicPhone">
                 <Form.Label>Phone</Form.Label>
                 <Form.Control type="text" placeholder="Enter your Phone" value={userPhone} onChange={({ target }) => setUserPhone(target.value)} />
@@ -54,7 +54,7 @@ const CheckoutForm = ({ onConfirm }) => {
                 Submit
             </Button>
         </Form>
-      );
+    );
 }
 
 export default CheckoutForm;

@@ -2,12 +2,12 @@
 /* eslint-disable react/prop-types */
 import React, { createContext, useState } from 'react';
 
-// Cart Context
+
 export const CartContext = createContext({ cart: [] });
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  console.log(cart)
+
 
 
   const addItem = (item, quantity) => {

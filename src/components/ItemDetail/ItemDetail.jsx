@@ -13,6 +13,13 @@ const ItemDetail = ({ product }) => {
     setQuantityAdded(quantity);
   };
 
+
+
+
+  if (!product) {
+    return <p>No product available</p>;
+  }
+
   return (
     <Card style={{ width: '100%', height: '100%' }}>
       <Card.Img variant="top" src={product.imageProduct} />
@@ -32,7 +39,6 @@ const ItemDetail = ({ product }) => {
             <Button variant="success" onClick={() => handleOnAdd(1)}>
               Agregar al carrito
             </Button>
-
           )}
         </div>
       </Card.Body>

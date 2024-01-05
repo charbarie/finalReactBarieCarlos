@@ -9,7 +9,7 @@ export const CardWidget = () => {
 
   return (
     <>
-      <Link to="/cart" className="CartWidget" style={{ display: totalQuantity > 0 ? 'block' : 'none' }}>
+      <Link to="/cart" className="CartWidget" >
         <img className="carrito" src={carrito} alt="carrito" />
         {totalQuantity.cart.length}
       </Link>

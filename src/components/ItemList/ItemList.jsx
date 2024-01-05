@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Item from '../Item/Item';
 
 const ItemList = ({ products }) => {
+
   return (
     <Row>
       {products.map((product) => (

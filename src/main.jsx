@@ -9,5 +9,5 @@ import { firebaseConnection } from './services/firebase/firebaseConfig.js'
 ReactDOM.createRoot(document.getElementById('root')).render(
 
     <App />
-  
+
 )
