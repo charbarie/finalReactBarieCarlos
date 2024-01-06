@@ -13,11 +13,8 @@ const ItemDetail = ({ product }) => {
     setQuantityAdded(quantity);
   };
 
-
-
-
   if (!product) {
-    return <p>No product available</p>;
+    return <p>  Producto no disponible </p>;
   }
 
   return (

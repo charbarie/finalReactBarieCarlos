@@ -9,9 +9,9 @@ import logo from './yeahlogo.png';
 const NavBar = () => {
   return (
     <Navbar expand="lg">
-      <Navbar.Brand href="#home" className="logo-container">
+      <NavLink to="/" className="logo-container">
         <img src={logo} alt="LogoMenu" className="logo-img" />
-      </Navbar.Brand>
+      </NavLink>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
