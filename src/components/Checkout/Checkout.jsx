@@ -63,7 +63,7 @@ const Checkout = () => {
 
         if (outOfStock.length === 0) {
             const ordersRef = collection(firebaseConnection, 'orders');
-            orderDocRef = await addDoc(ordersRef, newOrder); // Asignar el valor de orderDocRef aquí
+            orderDocRef = await addDoc(ordersRef, newOrder);
             await batch.commit();
         }
 

@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ItemCounter } from '../ItemCounter/ItemCounter';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { CartContext } from '../Context/CardContext'; // Ajusta la ruta correcta
+import { CartContext } from '../Context/CardContext';
 
 export const Item = ({ product }) => {
   const { addItem } = useContext(CartContext);
