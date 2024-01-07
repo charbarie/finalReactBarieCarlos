@@ -3,11 +3,11 @@ import { CartContext } from '../../../src/components/Context/CardContext.jsx';
 import { Timestamp, collection, writeBatch, doc, getDoc, addDoc } from "firebase/firestore";
 import CheckoutForm from '../CheckoutForm/CheckoutForm.jsx';
 import { firebaseConnection } from '../../services/firebase/firebaseConfig.js';
-
+import './Checkout.css'
 const Checkout = () => {
     const [loading, setLoading] = useState(false);
     const [orderId, setOrderId] = useState('');
-    const { cart, totalQuantity, resetItem } = useContext(CartContext);
+    const { cart, totalQuantity, resetItem, clearCart } = useContext(CartContext);
     let orderDocRef;
 
     const createOrder = async ({ userName, userPhone, userEmail }) => {
@@ -71,19 +71,26 @@ const Checkout = () => {
     }
 
     if (loading) {
-        return <h3>Procesando la orden...</h3>;
+        return <h3 >Procesando la orden...</h3>;
     }
 
     if (orderId) {
-        return <h3>Su orden ha sido creada exitosamente. Número de orden: {orderId}</h3>;
+        clearCart()
+        return <h3 >Su orden ha sido creada exitosamente. Número de orden: {orderId}</h3>;
+
+
     }
 
     return (
-        <div>
-            <h2>Checkout</h2>
-            <CheckoutForm onConfirm={createOrder} />
+        <div className='FinalyCheck'>
+            <h2>Finalizar compra </h2>
+            <div className='CheckoutFormContainer'>
+                <CheckoutForm onConfirm={createOrder} />
+            </div>
         </div>
     );
 }
+
+
 
 export default Checkout;
