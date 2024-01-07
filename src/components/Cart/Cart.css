@@ -1,0 +1,19 @@
+.resumen-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.resumen {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+Button {
+    padding: 40px;
+}

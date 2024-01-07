@@ -1,0 +1,18 @@
+.Countercontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.Countercontainer label {
+    margin: 0 10px;
+
+}
+
+.ButtonAdd {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 2px;
+}

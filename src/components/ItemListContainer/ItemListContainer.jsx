@@ -11,7 +11,6 @@ const ItemListContainer = () => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-
     if (categoryId) {
       const filterFirebase = getFirestore();
       const queryCollectionFilter = collection(filterFirebase, 'Productos');

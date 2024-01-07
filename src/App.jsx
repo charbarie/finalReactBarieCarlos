@@ -14,8 +14,6 @@ function App() {
     <>
       <CartProvider>
         <BrowserRouter>
-
-
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -25,7 +23,6 @@ function App() {
             <Route path="/Checkout" element={<Checkout />} />
             <Route path="*" element={<h1>404 NOT FOUND</h1>} />
           </Routes>
-
         </BrowserRouter>
       </CartProvider>
     </>

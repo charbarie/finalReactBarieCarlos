@@ -8,7 +8,7 @@ const Checkout = () => {
     const [loading, setLoading] = useState(false);
     const [orderId, setOrderId] = useState('');
     const { cart, totalQuantity, resetItem } = useContext(CartContext);
-    let orderDocRef; // Declaración de orderDocRef aquí
+    let orderDocRef;
 
     const createOrder = async ({ userName, userPhone, userEmail }) => {
         setLoading(true);
