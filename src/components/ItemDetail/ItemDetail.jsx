@@ -29,7 +29,7 @@ const ItemDetail = ({ product }) => {
         </div>
         <div style={{ width: '100%' }}>
           {quantityAdded > 0 ? (
-            <Link to="/cart">
+            <Link to="/Checkout">
               <Button onClick={() => addItem(product, quantityAdded)}>Finalizar</Button>
             </Link>
           ) : (

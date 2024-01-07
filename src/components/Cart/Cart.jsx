@@ -30,7 +30,7 @@ const Cart = () => {
         <Button onClick={() => clearCart()} className="button">
           Limpiar carrito
         </Button>
-        <Link to="/checkout" className="option">
+        <Link to="/Checkout" className="option">
           Checkout
         </Link>
       </>

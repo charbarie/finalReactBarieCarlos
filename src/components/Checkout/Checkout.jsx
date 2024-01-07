@@ -1,14 +1,14 @@
-import { useState, useContext } from "react";
-import { CartContext } from "../../hooks/Context/Context";
+import { useState, useContext } from 'react';
+import { CartContext } from '../../../src/components/Context/CardContext.jsx';
 import { Timestamp, collection, writeBatch, doc, getDoc, addDoc } from "firebase/firestore";
-import { firebaseConection } from "../../services/FirebaseConfig/FirebaseConfig";
-import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import CheckoutForm from '../CheckoutForm/CheckoutForm.jsx';
+import { firebaseConnection } from '../../services/firebase/firebaseConfig.js';
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false);
     const [orderId, setOrderId] = useState('');
-
     const { cart, totalQuantity, resetItem } = useContext(CartContext);
+    let orderDocRef; // Declaración de orderDocRef aquí
 
     const createOrder = async ({ userName, userPhone, userEmail }) => {
         setLoading(true);
@@ -21,53 +21,61 @@ const Checkout = () => {
                     userEmail
                 },
                 orderItems: cart,
-                totalItems: totalQuantity,
+                totalItems: totalQuantity || 0,
                 orderDate: Timestamp.fromDate(new Date())
-            }
+            };
 
-            const batch = writeBatch(firebaseConection);
-            const outOfStock = [];
-
-
-            for (const Item of cart) {
-                const ItemRef = doc(firebaseConection, 'Items', Item.id);
-                const ItemDoc = await getDoc(ItemRef);
-                if (ItemDoc.exists()) {
-                    const stock = ItemDoc.data().stock;
-                    if (stock >= Item.quantity) {
-                        batch.update(ItemRef, {
-                            stock: stock - Item.quantity
-                        });
-                    } else {
-                        outOfStock.push(Item.title);
-                    }
-                }
-            }
+            const outOfStock = await updateStockAndCreateOrder(newOrder);
 
             if (outOfStock.length > 0) {
                 setLoading(false);
-                console.error('Error:', outOfStock);
+                console.error('Error: Productos sin stock:', outOfStock);
             } else {
-                const ordersRef = collection(firebaseConection, 'orders');
-                const orderDocRef = await addDoc(ordersRef, newOrder);
-                setOrderId(orderDocRef.id);
-                await batch.commit();
-                resetItem();
-                setLoading(false);
-            }
 
+                setOrderId(orderDocRef.id);
+                resetItem();
+            }
         } catch (error) {
             console.error('Error:', error);
+        } finally {
             setLoading(false);
         }
     }
 
+    const updateStockAndCreateOrder = async (newOrder) => {
+        const batch = writeBatch(firebaseConnection);
+        const outOfStock = [];
+
+        for (const item of cart) {
+            const itemRef = doc(firebaseConnection, 'Productos', item.id);
+            const itemDoc = await getDoc(itemRef);
+
+            if (itemDoc.exists()) {
+                const stock = itemDoc.data().stock;
+
+                if (stock >= item.quantity) {
+                    batch.update(itemRef, { stock: stock - item.quantity });
+                } else {
+                    outOfStock.push(item.title);
+                }
+            }
+        }
+
+        if (outOfStock.length === 0) {
+            const ordersRef = collection(firebaseConnection, 'orders');
+            orderDocRef = await addDoc(ordersRef, newOrder); // Asignar el valor de orderDocRef aquí
+            await batch.commit();
+        }
+
+        return outOfStock;
+    }
+
     if (loading) {
-        return <h3>La orden se esta generando .</h3>
+        return <h3>Procesando la orden...</h3>;
     }
 
     if (orderId) {
-        return <h3> su orden es {orderId}</h3>
+        return <h3>Su orden ha sido creada exitosamente. Número de orden: {orderId}</h3>;
     }
 
     return (
@@ -75,7 +83,7 @@ const Checkout = () => {
             <h2>Checkout</h2>
             <CheckoutForm onConfirm={createOrder} />
         </div>
-    )
+    );
 }
 
 export default Checkout;

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "./CardWidget.css";
 import carrito from "./carrito.png";
 import { CartContext } from "../Context/CardContext";
@@ -9,7 +9,7 @@ export const CardWidget = () => {
 
     return (
         <>
-            <Link to="/cart" className="CartWidget">
+            <Link to="cart" className="CartWidget">
                 <img className="carrito" src={carrito} alt="carrito" />
                 {cart.length}
             </Link>

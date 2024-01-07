@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import React, { useState } from "react";
+
+import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
 
@@ -11,8 +10,8 @@ const CheckoutForm = ({ onConfirm }) => {
     const [userEmailConfirmation, setUserEmailConfirmation] = useState('');
     const [emailMatchError, setEmailMatchError] = useState('');
 
-    const handleConfirm = (e) => {
-        e.preventDefault();
+    const handleConfirm = (event) => {
+        event.preventDefault();
 
         if (userEmail === userEmailConfirmation) {
             const userData = {
