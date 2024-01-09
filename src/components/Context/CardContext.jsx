@@ -23,7 +23,9 @@ export const CartProvider = ({ children }) => {
     if (!isInCart(item.id)) {
       setCart(prev => [...prev, { ...item, quantity }]);
     } else {
-      console.log('Producto ya agregado');
+      setCart(prev =>
+        prev.map(prod => (prod.id === item.id ? { ...prod, quantity: prod.quantity + quantity } : prod))
+      );
     }
   };
 
@@ -41,7 +43,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, total, addItem, removeItem, clearCart }}>
+    <CartContext.Provider value={{ cart, total, addItem, removeItem, clearCart, isInCart }}>
       {children}
     </CartContext.Provider>
   );

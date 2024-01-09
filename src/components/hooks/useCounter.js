@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 
-export const useCounter = (min, max) => {
+export const useCounter = (min = 1, max) => {
   const [counter, setCounter] = useState(min);
 
 

@@ -1,9 +1,10 @@
 import { CartContext } from "../Context/CardContext";
 import { Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Item } from "../Item/Item";
+
 import { useContext } from "react";
 import './Cart.css'
+import Item from "../Item/Item";
 
 const Cart = () => {
   const { cart, clearCart, total } = useContext(CartContext);
@@ -11,12 +12,13 @@ const Cart = () => {
   if (total === 0) {
     return (
       <>
-        <h1>No hay productos </h1>
+        <h1 style={{ color: "white" }}> No hay productos </h1>
         <Link to="/" className="option">
-          Productos
+          <Button>Volver</Button>
         </Link>
       </>
     );
+
   } else {
     return (
       <>

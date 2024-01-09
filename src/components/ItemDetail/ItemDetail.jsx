@@ -1,56 +1,43 @@
-import { useContext, useState } from 'react';
+/* eslint-disable react/prop-types */
+
+import { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
-import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import { CartContext } from '../Context/CardContext';
+import ItemCounter from '../ItemCounter/ItemCounter';
+
 
 const ItemDetail = ({ product }) => {
-  const [quantityAdded, setQuantityAdded] = useState(0);
   const { addItem } = useContext(CartContext);
 
-  const handleOnAdd = (quantity) => {
-    setQuantityAdded(quantity);
+  const handleAddToCart = (selectedQuantity) => {
+    const quantity = selectedQuantity;
+    addItem(product, quantity);
+    console.log(`Añadir ${quantity} ${product.name} al carrito`);
   };
 
-  if (!product) {
-    return <p>  Producto no disponible </p>;
-  }
-
   return (
-    <Card style={{ width: '100%', height: '100%' }}>
-      <Card.Img variant="top" src={product.imageProduct} />
-      <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-        <div>
-          <Card.Title>{product.name}</Card.Title>
-          <Card.Text>{product.description}</Card.Text>
-          <Card.Text>${product.price}</Card.Text>
-          <Card.Text>Stock: {product.stock}</Card.Text>
-        </div>
-        <div style={{ width: '100%' }}>
-          {quantityAdded > 0 ? (
-            <Link to="/Checkout">
-              <Button onClick={() => addItem(product, quantityAdded)}>Finalizar</Button>
-            </Link>
-          ) : (
-            <Button variant="success" onClick={() => handleOnAdd(1)}>
-              Agregar al carrito
-            </Button>
-          )}
-        </div>
-      </Card.Body>
-    </Card>
+    <>
+
+      <Card className="custom-card">
+        <Link to={`/item/${product.id}`} className="custom-link">
+          <Card.Img variant="top" src={product.imageProduct} className="custom-image" />
+          <Card.Body>
+            <div className="text-container">
+              <Card.Text>${product.price}</Card.Text>
+              <Card.Title>{product.name}</Card.Title>
+            </div>
+          </Card.Body>
+        </Link>
+        <ItemCounter stock={product.stock} onAddToCart={handleAddToCart} />
+      </Card>
+
+
+    </>
   );
 };
 
-ItemDetail.propTypes = {
-  product: PropTypes.shape({
-    imageProduct: PropTypes.string,
-    name: PropTypes.string,
-    description: PropTypes.string,
-    price: PropTypes.number,
-    stock: PropTypes.number,
-  }),
-};
 
 export default ItemDetail;

@@ -9,7 +9,7 @@ export const CardWidget = () => {
 
     return (
         <>
-            <Link to="cart" className="CartWidget">
+            <Link to="/cart" className="CartWidget">
                 <img className="carrito" src={carrito} alt="carrito" />
                 {cart.length}
             </Link>

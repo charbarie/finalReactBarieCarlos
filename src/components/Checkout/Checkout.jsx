@@ -4,6 +4,10 @@ import { Timestamp, collection, writeBatch, doc, getDoc, addDoc } from "firebase
 import CheckoutForm from '../CheckoutForm/CheckoutForm.jsx';
 import { firebaseConnection } from '../../services/firebase/firebaseConfig.js';
 import './Checkout.css'
+
+
+
+
 const Checkout = () => {
     const [loading, setLoading] = useState(false);
     const [orderId, setOrderId] = useState('');
