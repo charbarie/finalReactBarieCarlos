@@ -4,7 +4,7 @@ import carrito from "./carrito.png";
 import { CartContext } from "../Context/CardContext";
 import { Link } from "react-router-dom";
 
-export const CardWidget = () => {
+const CardWidget = () => {
     const { cart } = useContext(CartContext);
 
     return (
