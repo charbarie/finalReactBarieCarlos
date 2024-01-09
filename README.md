@@ -6,3 +6,23 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+
+
+Pagina web destinada a la compra de productos relacionados con la cultura urbana 
+
+Dependencia:  
+firebase
+react-bootstrap 
+react-router-dom
+
+
+Install
+npm cache clean --force
+npm i 
+npm i firebase
+npm install react-bootstrap bootstrap
+npm install react-router-dom
+
+

@@ -23,7 +23,7 @@ export const ItemCounter = ({ initial = 1, stock, onAddToCart, onFinish }) => {
       <div className='ButtonAdd'>
 
         <Button variant="outline-success" onClick={() => onAddToCart(counter)} disabled={counter === 0}> Agregar </Button>
-        <Link to="/cart">
+        <Link to="/Checkout">
           <Button variant="outline-primary" onClick={handleFinish} disabled={counter === 0}> Finalizar </Button>
         </Link>
       </div>
