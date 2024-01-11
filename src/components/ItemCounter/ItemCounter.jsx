@@ -42,7 +42,7 @@ ItemCounter.propTypes = {
   initial: PropTypes.number,
   stock: PropTypes.number.isRequired,
   onAddToCart: PropTypes.func.isRequired,
-  onFinish: PropTypes.func.isRequired,
+
 };
 
 export default ItemCounter;

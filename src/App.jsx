@@ -7,6 +7,7 @@ import { CartProvider } from './components/Context/CardContext';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import NavBar from './components/NavBar/Navbar';
 import { Home } from './components/Home/Home';
+import Checkout from './components/Checkout/Checkout';
 
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/category/:categoryId" element={<ItemListContainer />} />
             <Route path="/item/:itemId" element={<ItemDetailContainer />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/Cart" element={<Cart />} />
+            <Route path="/Checkout" element={<Checkout />} />
             <Route path="*" element={<h1>404 NOT FOUND</h1>} />
           </Routes>
         </BrowserRouter>
