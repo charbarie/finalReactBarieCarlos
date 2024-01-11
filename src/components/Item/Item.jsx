@@ -30,7 +30,7 @@ const Item = ({ product }) => {
           <div className="text-container">
             <Card.Text>${product.price}</Card.Text>
             <Card.Title>{product.name}</Card.Title>
-            {isInCart(product.id) && <p>Cantidad de productos agregados: {product.quantity}</p>}
+            {isInCart(product.id) && <p>productos agregados: {product.quantity}</p>}
           </div>
         </Card.Body>
       </Link>

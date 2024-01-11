@@ -1,5 +1,5 @@
 import { CartContext } from "../Context/CardContext";
-import { Button, Row, Col } from "react-bootstrap";
+import { Button, Row, Col, CloseButton } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { useContext } from "react";
@@ -7,7 +7,7 @@ import './Cart.css'
 import Item from "../Item/Item";
 
 const Cart = () => {
-  const { cart, clearCart, total } = useContext(CartContext);
+  const { cart, clearCart, total, removeItem } = useContext(CartContext);
 
   if (total === 0) {
     return (
@@ -22,6 +22,15 @@ const Cart = () => {
   } else {
     return (
       <>
+        <Row>
+          {cart.map((product) => (
+            <Col key={product.id} xs={12} sm={6} md={4} lg={3} style={{ marginBottom: '1rem' }}>
+              <CloseButton bg="danger" className="delete-button" onClick={() => removeItem(product.id)} />
+              <Item key={product.id} product={product} />
+
+            </Col>
+          ))}
+        </Row>
         <div className="resumen-container">
           <div className="resumen">
             <h3>Total: ${total.toFixed(2)}</h3>
@@ -36,13 +45,7 @@ const Cart = () => {
             </Link>
           </div>
         </div>
-        <Row>
-          {cart.map((product) => (
-            <Col key={product.id} xs={12} sm={6} md={4} lg={3} style={{ marginBottom: '1rem' }}>
-              <Item key={product.id} product={product} />
-            </Col>
-          ))}
-        </Row>
+
 
 
       </>
