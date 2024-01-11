@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
   }, [itemId]);
 
   return (
-    <div style={{ width: '50%', height: '50%', paddingLeft: '35rem' }}>
+    <div style={{ width: '80%', height: '80%', paddingLeft: '35rem' }}>
       {loading ? (
         <p>Loading...</p>
       ) : (

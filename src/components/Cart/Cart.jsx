@@ -1,13 +1,18 @@
+import { useContext, useState } from "react";
 import { CartContext } from "../Context/CardContext";
 import { Button, Row, Col, CloseButton } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-import { useContext } from "react";
-import './Cart.css'
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import './Cart.css';
 import Item from "../Item/Item";
 
 const Cart = () => {
   const { cart, clearCart, total, removeItem } = useContext(CartContext);
+  const [showCheckoutForm, setShowCheckoutForm] = useState(false);
+
+  const handleFinalizarCompra = () => {
+    setShowCheckoutForm(true);
+  };
 
   if (total === 0) {
     return (
@@ -18,7 +23,6 @@ const Cart = () => {
         </Link>
       </>
     );
-
   } else {
     return (
       <>
@@ -27,10 +31,10 @@ const Cart = () => {
             <Col key={product.id} xs={12} sm={6} md={4} lg={3} style={{ marginBottom: '1rem' }}>
               <CloseButton bg="danger" className="delete-button" onClick={() => removeItem(product.id)} />
               <Item key={product.id} product={product} />
-
             </Col>
           ))}
         </Row>
+
         <div className="resumen-container">
           <div className="resumen">
             <h3>Total: ${total.toFixed(2)}</h3>
@@ -38,18 +42,20 @@ const Cart = () => {
               Borrar productos
             </Button>
 
-            <Link to="/Checkout" className="option">
-              <Button variant="success" style={{ margin: '0 0 10px 10px' }}>
-                Finalizar compra
-              </Button>
-            </Link>
+            <Button variant="success" style={{ margin: '0 0 10px 10px' }} onClick={handleFinalizarCompra}>
+              Finalizar compra
+            </Button>
           </div>
         </div>
 
-
-
+        {showCheckoutForm && (
+          <Row className="mt-3">
+            <Col xs={12}>
+              <CheckoutForm onConfirm={(userData) => console.log(userData)} />
+            </Col>
+          </Row>
+        )}
       </>
-
     );
   }
 };
